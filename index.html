@@ -38,9 +38,13 @@
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
       
+        <li><a href="/post/1/"> Go Map源码阅读和分析 </a></li>
+      
+        <li><a href="/post/2/"> 关于livermore的一些说明 </a></li>
+      
     </ul>
 
-    <p>&copy; 2015. All rights reserved. </p>
+    <p>&copy; 2016. All rights reserved. </p>
   </div>
 </div>
 
@@ -49,6 +53,47 @@
 <div class="posts">
 
       
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://wuyq101.github.io/post/2/">
+        关于livermore的一些说明
+      </a>
+    </h1>
+
+    <span class="post-date">Sun, Dec 27, 2015</span>
+
+    
+
+<h2 id="关于livermore:f5776ce002083f17f7a8f8f37568a092">关于livermore</h2>
+
+<p>准备写一个命令行工具：livermore。看名字应该知道是要做什么了吧，如果你也听说过<a href="https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore">Jesse Lauriston Livermore</a>。非常有名的一本书<a href="http://yuedu.163.com/source/dae645257ba843a896d2ba517dc55ff8_4">《股票作手回忆录》</a>， 这个版本是我看过翻译最喜欢的。好吧，我想写一个命令livermore，能抓取公开的股票数据，然后做一些简单的数据统计和根据指标筛选股票。</p>
+
+<h2 id="初步计划:f5776ce002083f17f7a8f8f37568a092">初步计划</h2>
+
+<ol>
+<li>创建数据库模型</li>
+<li>抓取网页内容-爬虫</li>
+<li>命令行参数支持和终端输出展示</li>
+<li>数据统计和指标筛选</li>
+</ol>
+
+<p>暂时先想到这些，接下来慢慢实现吧。</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://wuyq101.github.io/post/1/">
+        Go Map源码阅读和分析
+      </a>
+    </h1>
+
+    <span class="post-date">Sun, Dec 27, 2015</span>
+
+    <p>golang中的map是如何实现的，为什么map支持并发读，而不支持并发写？map中key和value是如何组织的，扩容机制是什么？带着这些问题，来阅读以下golang的map源代码。</p>
+
+  </div>
+  
   <div class="post">
     <h1 class="post-title">
       <a href="http://wuyq101.github.io/post/%E5%BC%80%E7%AF%87%E8%AF%B4%E6%98%8E/">
@@ -67,5 +112,8 @@
 </div>
 </div>
 
-  </body>
+  <script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

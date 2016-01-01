@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> Posts &middot; 柚子 </title>
+  <title> 关于livermore的一些说明 &middot; 柚子 </title>
 
   
   <link rel="stylesheet" href="http://wuyq101.github.io/css/poole.css">
@@ -21,12 +21,11 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="http://wuyq101.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="柚子" />
+  <link href="" rel="alternate" type="application/rss+xml" title="柚子" />
 </head>
 
-<body class="">
-
-<div class="sidebar">
+	<body class="">
+		<div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="http://wuyq101.github.io/"><h1>柚子</h1></a>
@@ -49,24 +48,33 @@
 </div>
 
 
-  <div class="content container">
-    <ul class="posts">
-        
-        <li>
-          <span><a href="http://wuyq101.github.io/post/2/">关于livermore的一些说明</a> <time class="pull-right post-list">Sun, Dec 27, 2015</time></span>
-        </li>
-        
-        <li>
-          <span><a href="http://wuyq101.github.io/post/1/">Go Map源码阅读和分析</a> <time class="pull-right post-list">Sun, Dec 27, 2015</time></span>
-        </li>
-        
-        <li>
-          <span><a href="http://wuyq101.github.io/post/%E5%BC%80%E7%AF%87%E8%AF%B4%E6%98%8E/">开篇说明</a> <time class="pull-right post-list">Sun, Dec 27, 2015</time></span>
-        </li>
-        
-    </ul>
-  </div>
-<script data-no-instant>document.write('<script src="http://'
+		<div class="content container">
+			<div class="post">
+			 	<h1>关于livermore的一些说明</h1>
+			  <span class="post-date">Sun, Dec 27, 2015</span>
+			      
+
+<h2 id="关于livermore:f5776ce002083f17f7a8f8f37568a092">关于livermore</h2>
+
+<p>准备写一个命令行工具：livermore。看名字应该知道是要做什么了吧，如果你也听说过<a href="https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore">Jesse Lauriston Livermore</a>。非常有名的一本书<a href="http://yuedu.163.com/source/dae645257ba843a896d2ba517dc55ff8_4">《股票作手回忆录》</a>， 这个版本是我看过翻译最喜欢的。好吧，我想写一个命令livermore，能抓取公开的股票数据，然后做一些简单的数据统计和根据指标筛选股票。</p>
+
+<h2 id="初步计划:f5776ce002083f17f7a8f8f37568a092">初步计划</h2>
+
+<ol>
+<li>创建数据库模型</li>
+<li>抓取网页内容-爬虫</li>
+<li>命令行参数支持和终端输出展示</li>
+<li>数据统计和指标筛选</li>
+</ol>
+
+<p>暂时先想到这些，接下来慢慢实现吧。</p>
+
+			</div>
+
+			
+		</div>
+
+  <script data-no-instant>document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
         + 'script>')</script></body>

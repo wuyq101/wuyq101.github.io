@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 柚子</title>
-    <link>http://wuyq101.github.io/post/</link>
-    <description>Recent content in Posts on 柚子</description>
+    <title>Development on 柚子</title>
+    <link>http://wuyq101.github.io/tags/development/</link>
+    <description>Recent content in Development on 柚子</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 27 Dec 2015 11:43:37 +0800</lastBuildDate>
-    <atom:link href="http://wuyq101.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wuyq101.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>关于livermore的一些说明</title>
@@ -41,18 +41,6 @@
       
       <guid>http://wuyq101.github.io/post/1/</guid>
       <description>&lt;p&gt;golang中的map是如何实现的，为什么map支持并发读，而不支持并发写？map中key和value是如何组织的，扩容机制是什么？带着这些问题，来阅读以下golang的map源代码。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>开篇说明</title>
-      <link>http://wuyq101.github.io/post/%E5%BC%80%E7%AF%87%E8%AF%B4%E6%98%8E/</link>
-      <pubDate>Sun, 27 Dec 2015 04:30:18 +0800</pubDate>
-      
-      <guid>http://wuyq101.github.io/post/%E5%BC%80%E7%AF%87%E8%AF%B4%E6%98%8E/</guid>
-      <description>&lt;p&gt;2015年的最后几天，借github宝地，搭建个blog。这里会记录一些工作上的内容和技术上的思考。&lt;/p&gt;
-
-&lt;p&gt;然后就是晒娃了，恩，是的，我也要变成晒娃狂魔了。&lt;/p&gt;
 </description>
     </item>
     

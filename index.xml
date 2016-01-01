@@ -6,8 +6,43 @@
     <description>Recent content on 柚子</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Dec 2015 04:30:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Dec 2015 11:43:37 +0800</lastBuildDate>
     <atom:link href="http://wuyq101.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>关于livermore的一些说明</title>
+      <link>http://wuyq101.github.io/post/2/</link>
+      <pubDate>Sun, 27 Dec 2015 11:43:37 +0800</pubDate>
+      
+      <guid>http://wuyq101.github.io/post/2/</guid>
+      <description>
+
+&lt;h2 id=&#34;关于livermore:f5776ce002083f17f7a8f8f37568a092&#34;&gt;关于livermore&lt;/h2&gt;
+
+&lt;p&gt;准备写一个命令行工具：livermore。看名字应该知道是要做什么了吧，如果你也听说过&lt;a href=&#34;https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore&#34;&gt;Jesse Lauriston Livermore&lt;/a&gt;。非常有名的一本书&lt;a href=&#34;http://yuedu.163.com/source/dae645257ba843a896d2ba517dc55ff8_4&#34;&gt;《股票作手回忆录》&lt;/a&gt;， 这个版本是我看过翻译最喜欢的。好吧，我想写一个命令livermore，能抓取公开的股票数据，然后做一些简单的数据统计和根据指标筛选股票。&lt;/p&gt;
+
+&lt;h2 id=&#34;初步计划:f5776ce002083f17f7a8f8f37568a092&#34;&gt;初步计划&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建数据库模型&lt;/li&gt;
+&lt;li&gt;抓取网页内容-爬虫&lt;/li&gt;
+&lt;li&gt;命令行参数支持和终端输出展示&lt;/li&gt;
+&lt;li&gt;数据统计和指标筛选&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;暂时先想到这些，接下来慢慢实现吧。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go Map源码阅读和分析</title>
+      <link>http://wuyq101.github.io/post/1/</link>
+      <pubDate>Sun, 27 Dec 2015 11:34:08 +0800</pubDate>
+      
+      <guid>http://wuyq101.github.io/post/1/</guid>
+      <description>&lt;p&gt;golang中的map是如何实现的，为什么map支持并发读，而不支持并发写？map中key和value是如何组织的，扩容机制是什么？带着这些问题，来阅读以下golang的map源代码。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>开篇说明</title>
