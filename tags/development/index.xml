@@ -6,8 +6,173 @@
     <description>Recent content in Development on 柚子</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Jan 2016 11:16:42 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2016 19:56:14 +0800</lastBuildDate>
     <atom:link href="http://wuyq101.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Go命令行工具cobra</title>
+      <link>http://wuyq101.github.io/post/4/</link>
+      <pubDate>Fri, 01 Jan 2016 19:56:14 +0800</pubDate>
+      
+      <guid>http://wuyq101.github.io/post/4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;cobra&lt;/a&gt;是go下的一个命令行解析库。写&lt;a href=&#34;http://wuyq101.github.io/post/2/&#34;&gt;livermore&lt;/a&gt;的时候，需要用到命令行解析，就找到了它。进入项目主页看了一下，发现蛮多高大上的项目也在使用，比如docker，还有本博客程序&lt;a href=&#34;http://gohugo.io/&#34;&gt;hugo&lt;/a&gt;，和hugo是同一个作者。&lt;/p&gt;
+
+&lt;p&gt;好吧，开始了解一下cobra是如何使用的。项目主页上文档已经很完备，使用非常简单。这里再简单介绍一下。&lt;/p&gt;
+
+&lt;h1 id=&#34;基本概念:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;基本概念&lt;/h1&gt;
+
+&lt;p&gt;这里使用livermore做例子来介绍。例如&lt;br /&gt;
+&lt;code&gt;livermore -v fetch sh600036 -s codes.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;livermore 应用程序的名称&lt;br /&gt;
+fetch 具体的command，这里是获取股票基本信息&lt;br /&gt;
+sh600036 fetch的参数 arg， 股票代码&lt;br /&gt;
+-v flag，是否开启verbose模式，打印debug信息&lt;br /&gt;
+-s fetch的一个flag，具体值: &amp;ldquo;codes.txt&amp;rdquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;h2 id=&#34;实现:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;实现&lt;/h2&gt;
+
+&lt;p&gt;文件结构如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  ▾ livermore/
+    ▾ cmd/
+        version.go
+        fetch.go
+        root.go
+      main.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;整个程序的入口-main:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;整个程序的入口，main&lt;/h3&gt;
+
+&lt;p&gt;整个程序入口main.go, 具体的命令都定义在cmd中，每个命令一个文件，这样比较清晰。
+在main.go中，只需要加载cobra命令的配置等信息就可以了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;github.com/wuyq101/livermore/cmd&amp;quot;
+
+func main() {
+	if err := cmd.RootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;定义根命令-livermore:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;定义根命令 livermore&lt;/h3&gt;
+
+&lt;p&gt;刚刚在main中加载的root cmd, 在cmd/root.go中定义livermore这个命令.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package cmd
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/spf13/cobra&amp;quot;
+)
+
+var Verbose bool
+
+var RootCmd = &amp;amp;cobra.Command{
+	Use:   &amp;quot;livermore&amp;quot;,
+	Short: &amp;quot;Livermore is a command line tool for stock data fetch and display&amp;quot;,
+	Long: `Livermore is a command line tool for stock data fetch and display.
+		   It was written in Go. 
+	       More detail please visit : https://github.com/wuyq101/livermore
+		`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// Do Stuff Here
+		fmt.Println(&amp;quot;This is test from cobra&amp;quot;)
+	},
+}
+
+func init() {
+	RootCmd.PersistentFlags().BoolVarP(&amp;amp;Verbose, &amp;quot;verbose&amp;quot;, &amp;quot;v&amp;quot;, false, &amp;quot;verbose output&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;定义子命令-version:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;定义子命令 version&lt;/h4&gt;
+
+&lt;p&gt;在cmd/version.go中定义version命令, 并且将它加入到livermore中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package cmd
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/spf13/cobra&amp;quot;
+)
+
+func init() {
+	RootCmd.AddCommand(versionCmd)
+}
+
+var versionCmd = &amp;amp;cobra.Command{
+	Use:   &amp;quot;version&amp;quot;,
+	Short: &amp;quot;Print version numbre of Livermore&amp;quot;,
+	Long:  &amp;quot;All software has versions. This is Livermore&#39;s&amp;quot;,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(&amp;quot;Livermore v0.1 --head&amp;quot;)
+	},
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;定义子命令fetch:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;定义子命令fetch&lt;/h4&gt;
+
+&lt;p&gt;在cmd/fetch.go中定义fetch命令，并且将它加入到livermore中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package cmd
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;github.com/spf13/cobra&amp;quot;
+)
+
+func init() {
+	fetchCmd.Flags().StringVarP(&amp;amp;Source, &amp;quot;source&amp;quot;, &amp;quot;s&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;Source directory to read from&amp;quot;)
+	RootCmd.AddCommand(fetchCmd)
+}
+
+var Source string
+
+var fetchCmd = &amp;amp;cobra.Command{
+	Use:   &amp;quot;fetch&amp;quot;,
+	Short: &amp;quot;Fetch stock data by code&amp;quot;,
+	Long: `Fetch stock data by code
+	
+	`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(&amp;quot;Start to fetch stock data ...&amp;quot;)
+		fmt.Printf(&amp;quot;args %q \n&amp;quot;, args)
+		fmt.Println(&amp;quot;Version &amp;quot;, Verbose)
+		fmt.Println(&amp;quot;Source&amp;quot;, Source)
+	},
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;flag:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;Flag&lt;/h3&gt;
+
+&lt;p&gt;Flag是另一种类型的参数，可以方便的控制command的具体行为。&lt;/p&gt;
+
+&lt;h4 id=&#34;全局范围的flag:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;全局范围的flag&lt;/h4&gt;
+
+&lt;p&gt;如果是全局范围内的flag，如上例&lt;code&gt;-v -verbose&lt;/code&gt;, 这个是全局性的，我们就加入到root cmd中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RootCmd.PersistentFlags().BoolVarP(&amp;amp;Verbose, &amp;quot;verbose&amp;quot;, &amp;quot;v&amp;quot;, false, &amp;quot;verbose output&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;子命令的flag:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;子命令的flag&lt;/h4&gt;
+
+&lt;p&gt;如果是某个子命令特有的flag， 如上例中&lt;code&gt;-s -source&lt;/code&gt;, 这个只在fetch命令中有效。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fetchCmd.Flags().StringVarP(&amp;amp;Source, &amp;quot;source&amp;quot;, &amp;quot;s&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;Source directory to read from&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;其他:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;其他&lt;/h2&gt;
+
+&lt;p&gt;集成cobra之后，cobra自动支持 &amp;ndash;help等参数。help的输出默认就提供了，你也可以在自己重新定义。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>防刷机制的一些思考</title>

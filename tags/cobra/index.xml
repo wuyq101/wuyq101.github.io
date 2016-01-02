@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on 柚子</title>
-    <link>http://wuyq101.github.io/categories/development/</link>
-    <description>Recent content in Development on 柚子</description>
+    <title>Cobra on 柚子</title>
+    <link>http://wuyq101.github.io/tags/cobra/</link>
+    <description>Recent content in Cobra on 柚子</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 01 Jan 2016 19:56:14 +0800</lastBuildDate>
-    <atom:link href="http://wuyq101.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wuyq101.github.io/tags/cobra/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Go命令行工具cobra</title>
@@ -171,64 +171,6 @@ var fetchCmd = &amp;amp;cobra.Command{
 &lt;h2 id=&#34;其他:e7fd8297e2196d1a566a3e2e51cbb23a&#34;&gt;其他&lt;/h2&gt;
 
 &lt;p&gt;集成cobra之后，cobra自动支持 &amp;ndash;help等参数。help的输出默认就提供了，你也可以在自己重新定义。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>防刷机制的一些思考</title>
-      <link>http://wuyq101.github.io/post/3/</link>
-      <pubDate>Fri, 01 Jan 2016 11:16:42 +0800</pubDate>
-      
-      <guid>http://wuyq101.github.io/post/3/</guid>
-      <description>&lt;p&gt;现在很多产品，为吸引新用户，往往会有一些激励措施，比如赠送一些免费的资源等。像理财类的app赠送的就更多，都是真金白银。因此也吸引了网上许多的人，反复注册，使劲薅羊毛，俗称羊毛党。如何才能防止被刷，又不降低真实用户的用户体验呢？一般的做法，是增加薅羊毛的成本，提升验证的难度。在我们的产品中，可以区分用户的有手机号、身份证、银行卡、设备唯一号（必须是App才有），Ip地址等。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;设备唯一号&lt;br /&gt;
-现在有很多的模拟器，可以修改设备参数，所以设备唯一号，只对那些使用真实手机的羊毛党有效。如果是使用模拟器的技术流羊毛党，也比较难。不过这里还有改进的空间，可以在app中增加识别模拟器的功能，可以防止一部分比较弱的模拟器，高端的还是防止不了。&lt;/li&gt;
-&lt;li&gt;IP地址&lt;br /&gt;
-这个可以换。而且真实的app用户，也是多个用户对应同一个IP地址，容易引起错误封杀。&lt;/li&gt;
-&lt;li&gt;手机号&lt;br /&gt;
-现在手机号的成本已经很低了，那些羊毛党基本上手里都有一大批的虚拟号或者真实号。自从有了阿里小号之后，虚拟号就更加容易获取。现在手机号基本上防止不了。目前也没有好的办法可以区分真实号码和虚拟号码。&lt;/li&gt;
-&lt;li&gt;身份证和银行卡&lt;br /&gt;
-办身份证和办银行卡的成本应该最高的。无奈羊毛党还是可以收集到很多的身份证和银行卡，他们的资料都是实打实的。所以即使我们限制一个身份证和一个银行卡只能领取一次奖励，那也只能增加我们的黑名单长度,第一次还是被薅走了。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;从上面可以看出单独利用某一个特征来做防刷都比较难处理。在用户提取奖励的时候，利用上面的信息做一些限制，设置一段时间内同一个设备号的提现次数，设置相同IP的注册次数，设置手机号的接收验证码的次数。还有就是利用收集到的信息，事后分析。将定位到的羊毛党的手机号、身份证、银行卡等信息列入黑名单。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>关于livermore的一些说明</title>
-      <link>http://wuyq101.github.io/post/2/</link>
-      <pubDate>Sun, 27 Dec 2015 11:43:37 +0800</pubDate>
-      
-      <guid>http://wuyq101.github.io/post/2/</guid>
-      <description>
-
-&lt;h2 id=&#34;关于livermore:f5776ce002083f17f7a8f8f37568a092&#34;&gt;关于livermore&lt;/h2&gt;
-
-&lt;p&gt;准备写一个命令行工具：livermore。看名字应该知道是要做什么了吧，如果你也听说过&lt;a href=&#34;https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore&#34;&gt;Jesse Lauriston Livermore&lt;/a&gt;。非常有名的一本书&lt;a href=&#34;http://yuedu.163.com/source/dae645257ba843a896d2ba517dc55ff8_4&#34;&gt;《股票作手回忆录》&lt;/a&gt;， 这个版本是我看过翻译最喜欢的。好吧，我想写一个命令livermore，能抓取公开的股票数据，然后做一些简单的数据统计和根据指标筛选股票。&lt;/p&gt;
-
-&lt;h2 id=&#34;初步计划:f5776ce002083f17f7a8f8f37568a092&#34;&gt;初步计划&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;创建数据库模型&lt;/li&gt;
-&lt;li&gt;抓取网页内容-爬虫&lt;/li&gt;
-&lt;li&gt;命令行参数支持和终端输出展示&lt;/li&gt;
-&lt;li&gt;数据统计和指标筛选&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;暂时先想到这些，接下来慢慢实现吧。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Go Map源码阅读和分析</title>
-      <link>http://wuyq101.github.io/post/1/</link>
-      <pubDate>Sun, 27 Dec 2015 11:34:08 +0800</pubDate>
-      
-      <guid>http://wuyq101.github.io/post/1/</guid>
-      <description>&lt;p&gt;golang中的map是如何实现的，为什么map支持并发读，而不支持并发写？map中key和value是如何组织的，扩容机制是什么？带着这些问题，来阅读以下golang的map源代码。&lt;/p&gt;
 </description>
     </item>
     
